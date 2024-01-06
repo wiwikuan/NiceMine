@@ -4,6 +4,8 @@
 
 只有一個檔案，在瀏覽器打開 index.html 就可以直接執行，連同圖片和音效只有 110 KB！
 
+直接玩：[https://nicechord.com/mine/](https://nicechord.com/mine/)
+
 ### 操作（小寫英文）：
 
 - wsad 上下左右移動游標
