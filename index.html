@@ -325,6 +325,7 @@
 
     function checkWinCondition() {
         let correctMineMarks = 0;
+		let incorrectMarks = 0;
         let revealedCells = 0;
         let totalMines = 0;
         let totalNonMines = 0;
@@ -343,14 +344,19 @@
                     if (cell.isRevealed) {
                         revealedCells++;
                     }
+                    if (cell.isMarked) {
+                        incorrectMarks++;
+                    }
                 }
             }
         }
-        debugMessage("正確標示 " + correctMineMarks + "/" + totalMines + " 翻開 " + revealedCells + "/" + totalNonMines)
+        debugMessage("正確標示 " + correctMineMarks + "/" + totalMines + " 翻開 " + revealedCells + "/" + totalNonMines + "錯誤標示 " + incorrectMarks)
 
         // 如果全部的地雷都被正確標示了 「或」 全部沒地雷的格子都翻開了
         if (correctMineMarks === totalMines || revealedCells === totalNonMines) {
-            return true; // 贏了！
+			if (incorrectMarks == 0) {
+            	return true; // 贏了！
+            }
         } else {
             return false; // 還沒贏，繼續遊戲。
         }
