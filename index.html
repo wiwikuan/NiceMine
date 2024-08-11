@@ -237,14 +237,7 @@
     }
 
     function revealNeighboringCells(x, y) {
-        if (!batchAction){
-            playSound('batchReveal');
-            // batchAction 是用來防止突然播出一大堆音效
-            batchAction = true;
-            setTimeout(function() {
-                batchAction = false;
-            }, 500);
-        }
+        
         for (let dx = -1; dx <= 1; dx++) {
             for (let dy = -1; dy <= 1; dy++) {
                 // 跳過自己
@@ -257,6 +250,16 @@
                 if (nx >= 0 && nx < grid.length && ny >= 0 && ny < grid[0].length) {
                     if (!grid[nx][ny].isRevealed && !grid[nx][ny].isMarked) {
                         revealBlock(nx, ny);
+                        // 要有連鎖翻到格子，才播放連鎖的音效
+                        // 而不是翻到 0 格子就會觸動
+                        if (!batchAction){
+                            playSound('batchReveal');
+                            // batchAction 是用來防止突然播出一大堆音效
+                            batchAction = true;
+                            setTimeout(function() {
+                                batchAction = false;
+                            }, 500);
+                        }
                     }
                 }
             }
