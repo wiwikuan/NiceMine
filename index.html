@@ -47,10 +47,6 @@
             case 'k': // 標示為地雷
                 markMine(playerPosition.x, playerPosition.y);
                 break;
-            case '*': // 啟動調試模式
-                debug = !debug; // Toggle the debug state
-                console.log("Debug mode: " + (debug ? "ON" : "OFF"));
-                break;
         }
     });
 
